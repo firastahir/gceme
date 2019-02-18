@@ -48,13 +48,6 @@ spec:
         }
       }
     }
-    stage('Build and push image with Container Builder') {
-      steps {
-        container('gcloud') {
-          sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${imageTag} ."
-        }
-      }
-    }
     stage('Deploy Canary') {
       // Canary branch
       when { branch 'canary' }
